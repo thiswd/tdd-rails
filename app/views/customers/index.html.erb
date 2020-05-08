@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>
+
+<br>
+<a href="#" id="my-link">Add Message</a>
+<div id="my-div"></div>
+
+<script>
+  const $link = document.querySelector("#my-link");
+  $link.addEventListener('click', e => {
+    e.preventDefault();
+    setTimeout(() => {
+      document.querySelector("#my-div").innerHTML = "<h1>Yes!</h1>";
+    }, 1000);
+  }, false)
+</script>
